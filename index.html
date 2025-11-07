@@ -34,35 +34,40 @@
 <body>
   <div class="container">
     <header>
-      <h1>公开资料下载 <span class="badge">PDF</span></h1>
-      <p class="lead">在此页面集中放置可公开下载的 PDF 文件。将你的 PDF 放进 <code>/files/</code> 文件夹，并把下面的链接改成对应路径即可。</p>
+      <h1>Public Files Download <span class="badge">PDF</span></h1>
+      <p class="lead">Download the public PDF files here. Place your PDFs into the <code>/files/</code> folder and update the links accordingly.</p>
     </header>
 
     <section class="grid" aria-label="下载列表">
+      <!-- 示例卡片 1 -->
       <article class="card">
-        <h2 class="title">示例文件 A（2025-10 版）</h2>
+        <h2 class="title">Sample File A (2025-10 Edition)</h2>
         <p class="meta">/files/sample-a.pdf · 预计大小：1.2 MB</p>
-        <p>简单说明：这是一个示例 PDF，用来展示下载与在线预览两种操作。</p>
+        <p>This is a sample PDF to demonstrate download and online preview options.</p>
         <div class="actions">
-          <a class="btn" href="files/sample-a.pdf" download>⬇️ 下载</a>
+          <a class="btn" href="files/sample-a.pdf" download>
+            <span aria-hidden="true">⬇️</span><span class="sr-only">下载</span>&nbsp;下载
+          </a>
           <a class="btn secondary" href="files/sample-a.pdf" target="_blank" rel="noopener noreferrer">在线预览</a>
         </div>
       </article>
 
+      <!-- 示例卡片 2 -->
       <article class="card">
-        <h2 class="title">示例文件 B：课程讲义</h2>
+        <h2 class="title">Sample File B: Lecture Notes</h2>
         <p class="meta">/files/lecture-notes.pdf · 预计大小：3.8 MB</p>
-        <p>课程讲义的公开版（去除了个人信息与答案）。</p>
+        <p>Public version of lecture notes (personal info and solutions removed).</p>
         <div class="actions">
           <a class="btn" href="files/lecture-notes.pdf" download>⬇️ 下载</a>
           <a class="btn secondary" href="files/lecture-notes.pdf" target="_blank" rel="noopener">在线预览</a>
         </div>
       </article>
 
+      <!-- 示例卡片 3 -->
       <article class="card">
-        <h2 class="title">示例文件 C：项目报告</h2>
+        <h2 class="title">Sample File C: Project Report</h2>
         <p class="meta">/files/project-report.pdf · 预计大小：2.4 MB</p>
-        <p>公开分享用的项目报告 PDF。</p>
+        <p>Public project report PDF for sharing.</p>
         <div class="actions">
           <a class="btn" href="files/project-report.pdf" download>⬇️ 下载</a>
           <a class="btn secondary" href="files/project-report.pdf" target="_blank" rel="noopener">在线预览</a>
@@ -71,11 +76,12 @@
     </section>
 
     <footer>
-      <p>© <span id="y"></span> Your Name · 若有问题请邮件联系：<a href="mailto:hello@example.com">hello@example.com</a></p>
+      <p>© <span id="y"></span> Your Name · Contact:<a href="mailto:hello@example.com">hello@example.com</a></p>
     </footer>
   </div>
 
   <script>
+    // 动态年份
     document.getElementById('y').textContent = new Date().getFullYear();
   </script>
 </body>
