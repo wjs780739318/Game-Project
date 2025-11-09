@@ -3,72 +3,169 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Public Files Download</title>
-  <meta name="description" content="Download public files from this page." />
+  <title>The Antique’s Mystery · Public Files</title>
+  <meta name="description" content="World‑facing documentation and downloads for The Antique’s Mystery." />
+  <!-- Fonts for classic Chinese-inspired serif look -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700&family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
-    :root { --bg: #ffffff; --fg: #1f2937; --muted: #6b7280; --card: #f8fafc; --brand: #3b82f6; }
-    @media (prefers-color-scheme: dark){ :root{ --bg:#0b0f14; --fg:#e5e7eb; --muted:#9ca3af; --card:#111827; --brand:#60a5fa; } }
-    *{ box-sizing: border-box; }
-    body{ margin:0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; background:var(--bg); color:var(--fg); line-height:1.6; }
-    .container{ max-width: 880px; margin: 0 auto; padding: 24px; }
-    header{ padding: 24px 0 8px; }
-    h1{ font-size: clamp(28px, 4vw, 36px); margin:0 0 8px; }
-    p.lead{ color: var(--muted); margin: 0 0 24px; }
-    .grid{ display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap:16px; }
-    .card{ background:var(--card); border:1px solid rgba(0,0,0,.06); border-radius: 14px; padding:16px; }
-    .title{ font-weight:600; margin:0 0 6px; font-size: 16px; }
-    .meta{ font-size: 13px; color: var(--muted); margin: 0 0 10px; }
-    .actions{ display:flex; gap:10px; }
-    .btn{ background: var(--brand); color:#fff; padding:10px 14px; border-radius: 10px; font-weight:600; text-decoration:none; display:inline-flex; align-items:center; justify-content:center; border: none; }
-    .btn.secondary{ background:transparent; border:1px solid rgba(0,0,0,.12); color: var(--fg); }
-    footer{ margin: 32px 0 12px; font-size: 13px; color: var(--muted); text-align:center; }
+    :root{
+      --paper:#f7f1e3;     /* parchment */
+      --ink:#2b2b2b;       /* text */
+      --frame:#a33a1f;     /* cinnabar red */
+      --accent:#b45309;    /* bronze */
+      --muted:#7c6f5d;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; color:var(--ink);
+      background:
+        radial-gradient(ellipse at 30% 20%,rgba(0,0,0,.03),transparent 40%),
+        radial-gradient(ellipse at 70% 80%,rgba(0,0,0,.03),transparent 40%),
+        var(--paper);
+      font-family: "Noto Serif SC", "Crimson Pro", ui-serif, Georgia, serif;
+      line-height:1.7;
+    }
+    .container{
+      max-width: 980px; margin: 28px auto; padding: 24px;
+      background: rgba(255,255,255,.5);
+      border: 2px solid var(--frame); border-radius: 16px;
+      box-shadow: inset 0 0 0 2px rgba(255,255,255,.6), 0 8px 20px rgba(0,0,0,.08);
+      position:relative;
+    }
+    .container:before,.container:after{
+      content:""; position:absolute; width:22px;height:22px; border:2px solid var(--frame); border-radius:4px; top:-11px; background:var(--paper);
+    }
+    .container:before{ left:-11px; } .container:after{ right:-11px; }
+    .hero{ width:100%; border:2px solid var(--frame); border-radius:12px; margin-bottom:16px; display:block; }
+    header{ padding:10px 0 8px; }
+    h1{ margin:0 0 6px; font-size: clamp(30px,4.5vw,44px); letter-spacing:.5px; font-weight:700; color:var(--frame); text-shadow:0 1px 0 #fff; border-left:6px solid var(--frame); padding-left:12px; }
+    p.lead{ color:var(--muted); margin: 6px 0 18px; }
+    .grid{ display:grid; gap:16px; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); }
+    .card{ background: linear-gradient(180deg, rgba(255,255,255,.7), rgba(255,255,255,.5)); border:2px solid var(--frame); border-radius:14px; padding:16px; box-shadow:0 3px 0 rgba(163,58,31,.2); }
+    .title{ font-weight:700; margin:0 0 6px; font-size:18px; }
+    .meta{ font-size:13px; color:var(--muted); margin:0 0 10px; }
+    .actions{ display:flex; gap:10px; flex-wrap:wrap; }
+    .btn{ background: linear-gradient(#c86b2b,#a64a19); color:#fff; padding:10px 14px; border-radius: 999px; font-weight:700; text-decoration:none; border:2px solid #7c2d12; box-shadow: 0 2px 0 #7c2d12; }
+    .btn:active{ transform: translateY(1px); box-shadow: 0 1px 0 #7c2d12; }
+    .btn.secondary{ background:transparent; color:var(--frame); border-color: var(--frame); }
+    footer{ margin: 26px 0 6px; font-size:13px; color:var(--muted); text-align:center; }
+    .audio{ width:100%; margin-top:8px; }
   </style>
 </head>
-
 <body>
   <div class="container">
+
+    <!-- Optional banner image: upload files/banner.png -->
+    <img class="hero" src="files/banner.png" alt="The Antique’s Mystery banner">
+
     <header>
-      <h1>Public Files</h1>
-      <p class="lead">Download or preview the files below. Place your files inside the <code>/files/</code> folder and update the links.</p>
+      <h1>The Antique’s Mystery — Public Files</h1>
+      <p class="lead">Download or preview the project materials below. Place your files inside the <code>/files/</code> folder. Links are world‑facing and require no login.</p>
     </header>
 
     <section class="grid" aria-label="Download List">
 
-      <!-- File Card Example 1 -->
-     <article class="card">
-  <h2 class="title">Board Game Design Project Report</h2>
-  <p class="meta">Located at: /files/Board Game Project .pdf</p>
-  <p>Final report for the board game project.</p>
-  <div class="actions">
-    <!-- URL 中的空格必须编码为 %20；你的文件名在 .pdf 前也有一个空格 -->
-    <a class="btn" href="files/Board%20Game%20Project%20.pdf" download>Download</a>
-    <a class="btn secondary" href="files/Board%20Game%20Project%20.pdf" target="_blank" rel="noopener">Preview</a>
-  </div>
-</article>
-
-
-      <!-- File Card Example 2 -->
+      <!-- Boardgame Project (PDF) -->
       <article class="card">
-        <h2 class="title">Sample File B</h2>
-        <p class="meta">Located at: /files/sample-b.zip</p>
-        <p>Description of this file goes here.</p>
+        <h2 class="title">Boardgame Project (PDF)</h2>
+        <p class="meta">Location: /files/Bordgame project.pdf</p>
+        <p>Complete write‑up of the board game project.</p>
         <div class="actions">
-          <a class="btn" href="files/sample-b.zip" download>Download</a>
-          <a class="btn secondary" href="files/sample-b.zip" target="_blank" rel="noopener">Preview</a>
+          <a class="btn" href="files/Bordgame%20project.pdf" download>Download</a>
+          <a class="btn secondary" href="files/Bordgame%20project.pdf" target="_blank" rel="noopener">Preview</a>
+        </div>
+      </article>
+
+      <!-- Flowchart (PDF) -->
+      <article class="card">
+        <h2 class="title">Flowchart (PDF)</h2>
+        <p class="meta">Location: /files/flowchart.pdf</p>
+        <p>Process flow of the game logic.</p>
+        <div class="actions">
+          <a class="btn" href="files/flowchart.pdf" download>Download</a>
+          <a class="btn secondary" href="files/flowchart.pdf" target="_blank" rel="noopener">Preview</a>
+        </div>
+      </article>
+
+      <!-- Group Meeting Logs (PDF) -->
+      <article class="card">
+        <h2 class="title">Group Meeting Logs (PDF)</h2>
+        <p class="meta">Location: /files/Gourp Meeting logs.pdf</p>
+        <p>Time‑stamped notes of team meetings.</p>
+        <div class="actions">
+          <a class="btn" href="files/Gourp%20Meeting%20logs.pdf" download>Download</a>
+          <a class="btn secondary" href="files/Gourp%20Meeting%20logs.pdf" target="_blank" rel="noopener">Preview</a>
+        </div>
+      </article>
+
+      <!-- Playtest Log (PDF) -->
+      <article class="card">
+        <h2 class="title">Playtest Log (PDF)</h2>
+        <p class="meta">Location: /files/Playingtest log.pdf</p>
+        <p>Findings from play sessions and balance iterations.</p>
+        <div class="actions">
+          <a class="btn" href="files/Playingtest%20log.pdf" download>Download</a>
+          <a class="btn secondary" href="files/Playingtest%20log.pdf" target="_blank" rel="noopener">Preview</a>
+        </div>
+      </article>
+
+      <!-- Quantitative Analysis (PDF) -->
+      <article class="card">
+        <h2 class="title">Quantitative Analysis (PDF)</h2>
+        <p class="meta">Location: /files/quantitative analysis.pdf</p>
+        <p>Probability and timing analysis informing design changes.</p>
+        <div class="actions">
+          <a class="btn" href="files/quantitative%20analysis.pdf" download>Download</a>
+          <a class="btn secondary" href="files/quantitative%20analysis.pdf" target="_blank" rel="noopener">Preview</a>
+        </div>
+      </article>
+
+      <!-- Group Member Contributions (PDF) -->
+      <article class="card">
+        <h2 class="title">Group Member Contributions (PDF)</h2>
+        <p class="meta">Location: /files/group menber contributions.pdf</p>
+        <p>Individual contributions with time‑stamped artifacts.</p>
+        <div class="actions">
+          <a class="btn" href="files/group%20menber%20contributions.pdf" download>Download</a>
+          <a class="btn secondary" href="files/group%20menber%20contributions.pdf" target="_blank" rel="noopener">Preview</a>
+        </div>
+      </article>
+
+      <!-- Game Trailer (MP3) -->
+      <article class="card">
+        <h2 class="title">Game Trailer (MP3)</h2>
+        <p class="meta">Location: /files/game trailer.mp3</p>
+        <p>Audio trailer introducing the theme and tension.</p>
+        <audio class="audio" controls src="files/game%20trailer.mp3"></audio>
+        <div class="actions">
+          <a class="btn" href="files/game%20trailer.mp3" download>Download</a>
+          <a class="btn secondary" href="files/game%20trailer.mp3" target="_blank" rel="noopener">Open</a>
+        </div>
+      </article>
+
+      <!-- Rule Book (PDF) -->
+      <article class="card">
+        <h2 class="title">Rule Book (PDF)</h2>
+        <p class="meta">Location: /files/rule book.pdf</p>
+        <p>Complete rules for playing The Antique’s Mystery.</p>
+        <div class="actions">
+          <a class="btn" href="files/rule%20book.pdf" download>Download</a>
+          <a class="btn secondary" href="files/rule%20book.pdf" target="_blank" rel="noopener">Preview</a>
         </div>
       </article>
 
     </section>
 
     <footer>
-      © <span id="year"></span> Your Name · Contact: your@email
+      © <span id="year"></span> The Antique’s Mystery · Contact: hello@example.com
     </footer>
   </div>
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
-
 </body>
 </html>
-
